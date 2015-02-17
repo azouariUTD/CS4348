@@ -4,17 +4,20 @@ import java.util.Map;
 
 public class Batch {
 	String workingDir;
-	Map commands = new HashMap();
+	Map<String, Command> commands = new HashMap<String, Command>();
 	
 	String getWorkingDirectory() {
 		return workingDir;
 	}
 	
 	
-	Map getCommands() {
+	Map<String, Command> getCommands() {
 		return commands;
 	}
 	
+	void addCommand(Command command) {
+		
+	}
 	
 
 }

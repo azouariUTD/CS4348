@@ -24,7 +24,7 @@ public class Ahmed {
 			Document doc = dBuilder.parse(args[0]);
 
 			//Element pnode = doc.getDocumentElement();
-			NodeList nodes = doc.getElementsByTagName(tagname)
+			//NodeList nodes = doc.getElementsByTagName(tagname)
 			
 			
 
