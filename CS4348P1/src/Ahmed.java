@@ -1,3 +1,5 @@
+//This is what I do all my testing!
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,6 +10,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class Ahmed {
@@ -21,12 +24,24 @@ public class Ahmed {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
 					.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse(args[0]);
+			Document doc = dBuilder.parse("work/batch1.dos.xml");
 
-			//Element pnode = doc.getDocumentElement();
-			//NodeList nodes = doc.getElementsByTagName(tagname)
-			
-			
+			Element pnode = doc.getDocumentElement();
+			NodeList nodes = pnode.getChildNodes();
+			for (int idx = 0; idx < nodes.getLength(); idx++) {
+				Node node = nodes.item(idx);
+				if (node.getNodeType() == Node.ELEMENT_NODE) {
+					Element elem = (Element) node;
+					System.out.print(elem.getNodeName() + " ");
+					System.out.println("id=" + elem.getAttribute("id")
+							+ " path=" + elem.getAttribute("path") 
+							+ " agrs=" + elem.getAttribute("args")
+							+ " in=" + elem.getAttribute("in")
+							+ " out=" + elem.getAttribute("out")
+
+					);
+				}
+			}
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
