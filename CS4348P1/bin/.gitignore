@@ -5,3 +5,8 @@
 /ProcessException.class
 /Batch.class
 /Command.class
+/cmdCommand.class
+/WDCommand.class
+/FileCommand.class
+/PipeCommand.class
+/PipeCmdCommand.class
