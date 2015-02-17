@@ -1,7 +1,7 @@
 import org.w3c.dom.Element;
 
 
-public class FileCommand {
+public class FileCommand extends Command  {
 	String describe() {
 		return "Command is";
 	}

@@ -1,7 +1,7 @@
 import org.w3c.dom.Element;
 
 
-public class PipeCmdCommand {
+public class PipeCmdCommand extends Command  {
 	String describe() {
 		return "Command is";
 	}

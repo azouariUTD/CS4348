@@ -1,7 +1,7 @@
 import org.w3c.dom.Element;
 
 
-public class WDCommand {
+public class WDCommand extends Command  {
 	String describe() {
 		return "Command is";
 	}

@@ -1,7 +1,8 @@
 import org.w3c.dom.Element;
 
 
-public class cmdCommand extends Command {
+public class CmdCommand extends Command {
+	
 	String describe() {
 		return "Command is";
 	}
