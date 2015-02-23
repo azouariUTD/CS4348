@@ -11,5 +11,13 @@ public class PipeCommand extends Command  {
 	void parse(Element elem) {
 		
 	}
+	
+	public String getCommandID() {
+		return "hello";
+	}
+	
+	public String getWorkingDir() {
+		return "Not applicable";
+	}
 
 }

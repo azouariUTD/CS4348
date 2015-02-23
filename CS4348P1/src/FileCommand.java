@@ -2,9 +2,10 @@ import org.w3c.dom.Element;
 
 
 public class FileCommand extends Command  {
-	String id;//
+	String id;
 	String path;
 	Element elem;
+	
 	FileCommand(Element elem) {
 		this.elem = elem;
 		
@@ -21,5 +22,14 @@ public class FileCommand extends Command  {
 		 path = elem.getAttribute("path");
 		
 	}
+	
+	public String getCommandID() {
+		return id;
+	}
+	
+	public String getWorkingDir() {
+		return "Not applicable";
+	}
+
 
 }

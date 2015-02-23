@@ -14,19 +14,27 @@ public class CmdCommand extends Command {
 		
 	}
 	
-	String describe() {
+	public String describe() {
 		return "Command " + path;
 	}
-	void execute(String workingDir) {
+	public void execute(String workingDir) {
 		
 	}
-	void parse(Element elem) {
+	public void parse(Element elem) {
 		 id = elem.getAttribute("id");
 		 path = elem.getAttribute("path");
 		 args = elem.getAttribute("args");
 		 in = elem.getAttribute("in");
 		 out = elem.getAttribute("out");
 		
+	}
+	
+	public String getCommandID() {
+		return id;
+	}
+	
+	public String getWorkingDir() {
+		return "Not applicable";
 	}
 
 }

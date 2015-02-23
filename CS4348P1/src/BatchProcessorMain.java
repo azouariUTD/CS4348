@@ -13,17 +13,9 @@ public class BatchProcessorMain {
 
 			File batchFile = new File(fileName);
 
-			BatchParser batch = new BatchParser();
-			batch.buildBatch(batchFile);
+			BatchParser batchF = new BatchParser();
+			Batch batch = batchF.buildBatch(batchFile);
 
-			// TODO pass file to XML Parser returns array list
-
-			// TODO pass array list to command builder case 1 without pipe case
-			// 2 with pipe
-
-			// TODO case 1 without pipe create a new objects with the args
-
-			// TODO case 2 with pipe create a new objects with the args.
 
 		}
 

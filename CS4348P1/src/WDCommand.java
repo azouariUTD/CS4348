@@ -6,6 +6,7 @@ public class WDCommand extends Command  {
 	private String id;//
 	private String path;
 	private Element elem;
+	
 	WDCommand(Element elem) {
 		this.elem = elem;
 		
@@ -20,12 +21,17 @@ public class WDCommand extends Command  {
 	public void parse(Element elem) {
 		 id = elem.getAttribute("id");
 		 path = elem.getAttribute("path");
-		 setWorkingDir(path);
+		 
 		
 	}
 	
-	public String getDirectory() {
+	public String getWorkingDir() {
 		return path;
 	}
+	
+	public String getCommandID() {
+		return id;
+	}
+
 
 }

@@ -3,10 +3,8 @@ import java.util.Map;
 
 
 public class Batch {
-	String workingDir;
-	
-	
-	Map<String, Command> commands = new HashMap<String, Command>();
+	private String workingDir;
+	private Map<String, Command> commands = new HashMap<String, Command>();
 	
 	Batch (String workingDir , Map<String, Command> commands) {
 		this.workingDir = workingDir;
@@ -14,16 +12,17 @@ public class Batch {
 		
 	}
 	
-	String getWorkingDirectory() {
+	public String getWorkingDirectory() {
 		return workingDir;
 	}
 	
 	
-	Map<String, Command> getCommands() {
+	public Map<String, Command> getCommands() {
 		return commands;
 	}
 	
-	void addCommand(Command command) {
+	public void addCommand(Command command) {
+		
 		
 	}
 	
