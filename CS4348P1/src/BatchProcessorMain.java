@@ -5,15 +5,16 @@ import java.io.FileInputStream;
 public class BatchProcessorMain {
 
 	public static void main(String[] args) {
-//Test
+		//Batch batch;
+
 		try {
 
 			String fileName = args[0];
-			System.out.println(fileName);
 
-			File f = new File(fileName);
+			File batchFile = new File(fileName);
 
-			FileInputStream fis = new FileInputStream(f);
+			BatchParser batch = new BatchParser();
+			batch.buildBatch(batchFile);
 
 			// TODO pass file to XML Parser returns array list
 
@@ -33,6 +34,10 @@ public class BatchProcessorMain {
 			e.printStackTrace();
 
 		}
+
+	}
+
+	public void executeBatch(Batch batch) {
 
 	}
 

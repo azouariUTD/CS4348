@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -17,16 +19,52 @@ import org.w3c.dom.NodeList;
 
 
 public class BatchParser {
-	private FileInputStream batchFile;
 	
-	BatchParser (FileInputStream batchFile) {
-		this.batchFile = batchFile;
+	
+	BatchParser () {
 		
+		
+	}
+	
+	
+	
+	
+	
+	
+	public Command buildCommand(Element elem) {
+		
+		String cmdName = elem.getNodeName();
+		if ("wd".equalsIgnoreCase(cmdName)) {
+			System.out.println("Parsing wd");
+			Command cmd  = new WDCommand(elem);
+			cmd.parse(elem);
+			return cmd;
+			
+			//System.out.println(cmd.describe() + " " );
+		}
+	    else if ("file".equalsIgnoreCase(cmdName)) {
+	    	System.out.println("Parsing file");
+	    	Command cmd  = new FileCommand(elem);
+	    	cmd.parse(elem);
+	    	return cmd;
+	    	//System.out.println(cmd.describe() + " " );
+	    	
+	   }
+	    else if ("cmd".equalsIgnoreCase(cmdName)) {
+			System.out.println("Parsing cmd");
+			Command cmd  = new CmdCommand(elem);
+			cmd.parse(elem);
+			return cmd;
+			// System.out.println(cmd.describe() + " " );
+		} else
+		
+		return null;
 	}
 	
 	public Batch buildBatch(File batchFile) {
 		String workingDir = null;
-		Map<String, Command> commands = null;
+		Map<String, Command> commands = new HashMap<String, Command>();
+		Command cmd = null ;
 		
 		try {
 		FileInputStream fis = new FileInputStream(batchFile);
@@ -42,14 +80,31 @@ public class BatchParser {
 			Node node = nodes.item(idx);
 			if (node.getNodeType() == Node.ELEMENT_NODE) {
 				Element elem = (Element) node;
-				switch(elem.getNodeName()) {
-				case "wd": workingDir = elem.getAttribute("path") ;
+				cmd = buildCommand(elem);
+				try {
+				commands.put("test" + idx, cmd);
+				} catch (Exception e) {}
 				
-				}
+				
+				
 
 				;
 			}
 		}
+		Iterator it = commands.entrySet().iterator();
+		while (it.hasNext()) {
+			
+	        Map.Entry pair = (Map.Entry)it.next();
+	        boolean flag = true;
+			if (flag) {
+				
+				flag = false;
+			}
+	        System.out.println(pair.getKey() + " = " );
+	        it.remove(); // avoids a ConcurrentModificationException
+	    }
+		
+		System.out.println(workingDir);
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -61,6 +116,8 @@ public class BatchParser {
 		return B;
 		
 	}
+	
+	
 	
 	
 	private static void parseCommand(Element elem) throws ProcessException

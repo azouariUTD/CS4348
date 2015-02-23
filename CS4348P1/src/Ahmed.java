@@ -3,6 +3,7 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Queue;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -13,10 +14,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+;
+
 public class Ahmed {
 
 	public static void main(String[] args) {
 		File f = new File(args[0]);
+		
+		//Queue<TreeNode> que = new java.util.LinkedList<TreeNode>();
 
 		try {
 			FileInputStream fis = new FileInputStream(f);
@@ -24,7 +29,7 @@ public class Ahmed {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory
 					.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			Document doc = dBuilder.parse("work/batch1.dos.xml");
+			Document doc = dBuilder.parse("work/batch4.xml");
 
 			Element pnode = doc.getDocumentElement();
 			NodeList nodes = pnode.getChildNodes();
