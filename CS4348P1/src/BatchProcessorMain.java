@@ -1,6 +1,9 @@
 import java.io.File;
 
 import java.io.FileInputStream;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class BatchProcessorMain {
 
@@ -15,6 +18,7 @@ public class BatchProcessorMain {
 
 			BatchParser batchF = new BatchParser();
 			Batch batch = batchF.buildBatch(batchFile);
+			executeBatch(batch);
 
 
 		}
@@ -29,7 +33,19 @@ public class BatchProcessorMain {
 
 	}
 
-	public void executeBatch(Batch batch) {
+	public static void executeBatch(Batch batch) {
+		Iterator it = batch.getCommands().entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry pair = (Map.Entry)it.next();
+	        System.out.println(pair.getKey() + " = " + pair.getValue());
+	        Command cmd = (Command) pair.getValue();
+	        //System.out.println(cmd.getWorkingDir());
+	        cmd.execute(batch.getWorkingDirectory());
+	        it.remove(); // avoids a ConcurrentModificationException
+		}
+		System.out.println(batch.getWorkingDirectory());
+		
+		
 
 	}
 

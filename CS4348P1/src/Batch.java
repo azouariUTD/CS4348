@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -22,6 +24,8 @@ public class Batch {
 	}
 	
 	public void addCommand(Command command) {
+		List<String> cmd = new ArrayList<String>();
+		
 		
 		
 	}

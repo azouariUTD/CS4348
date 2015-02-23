@@ -57,6 +57,7 @@ public class BatchParser {
 		String workingDir = null;
 		Map<String, Command> commands = new HashMap<String, Command>();
 		Command cmd = null;
+		
 
 		try {
 			FileInputStream fis = new FileInputStream(batchFile);
@@ -92,6 +93,7 @@ public class BatchParser {
 
 		}
 		Batch B = new Batch(workingDir, commands);
+		
 
 		return B;
 

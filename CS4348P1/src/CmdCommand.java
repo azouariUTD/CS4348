@@ -1,5 +1,10 @@
 import org.w3c.dom.Element;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class CmdCommand extends Command {
 	
@@ -17,7 +22,38 @@ public class CmdCommand extends Command {
 	public String describe() {
 		return "Command " + path;
 	}
-	public void execute(String workingDir) {
+	public void execute(String workingDir)  {
+		List<String> command = new ArrayList<String>();
+		command.add(path);
+		command.add(args);
+		command.add(in);
+		ProcessBuilder builder = new ProcessBuilder();
+		builder.command(command);
+		builder.directory(new File(workingDir));
+		
+	
+		builder.redirectError(new File("error.txt"));
+		builder.redirectOutput(new File(out));
+		
+		Process process = null;
+		 
+		try {
+			 process = builder.start();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			process.waitFor();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("Program terminated!");
+		System.out.println("Executed");
+		
 		
 	}
 	public void parse(Element elem) {
