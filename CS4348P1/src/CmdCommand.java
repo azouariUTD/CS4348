@@ -14,6 +14,8 @@ public class CmdCommand extends Command {
 	String in = null;
 	String out = null;
 	Element elem;
+	String inFile;
+	String outFile;
 	CmdCommand(Element elem) {
 		this.elem = elem;
 		
@@ -24,6 +26,9 @@ public class CmdCommand extends Command {
 	}
 	public void execute(String workingDir)  {
 		List<String> command = new ArrayList<String>();
+		//infile = quick access through the hashmap
+		//Add in and out 
+		//Get object with in id ==> file name
 		command.add(path);
 		command.add(args);
 		command.add(in);

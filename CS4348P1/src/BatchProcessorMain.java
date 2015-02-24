@@ -36,11 +36,13 @@ public class BatchProcessorMain {
 	public static void executeBatch(Batch batch) {
 		Iterator it = batch.getCommands().entrySet().iterator();
 		
+		
 		while (!batch.getCommandsQueue().isEmpty()) {
 		Command cmd = batch.getCommandsQueue().poll();
 		System.out.println(cmd.describe());
 		cmd.execute(batch.getWorkingDirectory());
 		}
+		
 		
 		/*
 		while (it.hasNext()) {
@@ -53,8 +55,8 @@ public class BatchProcessorMain {
 	        System.out.println(cmd.describe());
 	        //cmd.execute(batch.getWorkingDirectory());
 	        it.remove(); // avoids a ConcurrentModificationException
-		}
-		*/
+		}*/
+		
 		
 		
 		

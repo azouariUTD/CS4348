@@ -30,7 +30,7 @@ public class Batch {
 	
 	public void addCommand(Command command) {
 		List<String> cmd = new ArrayList<String>();
-		
+		//Set all the in out etc....
 		
 		
 	}
