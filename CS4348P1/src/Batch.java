@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class Batch {
 	private String workingDir;
-	private Map<String, Command> commands = new HashMap<String, Command>();
+	private Map<String, Command> commands;
 	Queue<Command> que;
 	
 	Batch (String workingDir , Map<String, Command> commands, Queue<Command> que) {

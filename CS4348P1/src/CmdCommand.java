@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class CmdCommand extends Command {
@@ -24,11 +25,14 @@ public class CmdCommand extends Command {
 	public String describe() {
 		return "Command " + path;
 	}
-	public void execute(String workingDir)  {
+	public void execute(String workingDir , Map<String, Command> map)  {
 		List<String> command = new ArrayList<String>();
+		Command cmd = map.get(out);
+		outFile = cmd.getWorkingDir();
 		//infile = quick access through the hashmap
 		//Add in and out 
 		//Get object with in id ==> file name
+		System.out.println("This is==>in:" + in);
 		command.add(path);
 		command.add(args);
 		command.add(in);
@@ -38,7 +42,7 @@ public class CmdCommand extends Command {
 		
 	
 		builder.redirectError(new File("error.txt"));
-		builder.redirectOutput(new File(out));
+		builder.redirectOutput(new File(outFile));
 		
 		Process process = null;
 		 

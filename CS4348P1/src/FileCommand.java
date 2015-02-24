@@ -1,3 +1,5 @@
+import java.util.Map;
+
 import org.w3c.dom.Element;
 
 
@@ -14,7 +16,7 @@ public class FileCommand extends Command  {
 	String describe() {
 		return "File Command on file: " + path;
 	}
-	void execute(String workingDir) {
+	void execute(String workingDir, Map<String, Command> map) {
 		
 	}
 	void parse(Element elem) {
@@ -27,8 +29,10 @@ public class FileCommand extends Command  {
 		return id;
 	}
 	
+	
+	
 	public String getWorkingDir() {
-		return "Not applicable";
+		return path;
 	}
 
 

@@ -1,3 +1,5 @@
+import java.util.Map;
+
 import org.w3c.dom.Element;
 
 
@@ -15,7 +17,7 @@ public class WDCommand extends Command  {
 	public String describe() {
 		return "The working directory will be set to " + path;
 	}
-	void execute(String workingDir) {
+	void execute(String workingDir, Map<String, Command> map) {
 		
 	}
 	public void parse(Element elem) {

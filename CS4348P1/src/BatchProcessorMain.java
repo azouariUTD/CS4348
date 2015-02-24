@@ -40,7 +40,7 @@ public class BatchProcessorMain {
 		while (!batch.getCommandsQueue().isEmpty()) {
 		Command cmd = batch.getCommandsQueue().poll();
 		System.out.println(cmd.describe());
-		cmd.execute(batch.getWorkingDirectory());
+		cmd.execute(batch.getWorkingDirectory() , batch.getCommands());
 		}
 		
 		
