@@ -34,6 +34,9 @@ public class WDCommand extends Command  {
 	public String getCommandID() {
 		return id;
 	}
-
+	
+	public String getPath() {
+		return path;
+	}
 
 }

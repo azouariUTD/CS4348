@@ -13,6 +13,7 @@ public abstract class  Command {
 	abstract void parse(Element elem);
 	abstract String getCommandID();
 	abstract String getWorkingDir();
+	abstract String getPath();
 	
 	//abstract void set
 

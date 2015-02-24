@@ -21,5 +21,9 @@ public class PipeCommand extends Command  {
 	public String getWorkingDir() {
 		return "Not applicable";
 	}
+	
+	public String getPath() {
+		return null;
+	}
 
 }

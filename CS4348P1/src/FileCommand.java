@@ -32,6 +32,10 @@ public class FileCommand extends Command  {
 	
 	
 	public String getWorkingDir() {
+		return "Not applicable";
+	}
+	
+	public String getPath() {
 		return path;
 	}
 

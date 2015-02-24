@@ -1,0 +1,14 @@
+total 128
+-rw-r--r--  1 ahmedzouari  staff   8916 Feb 16 09:29 addLines.jar
+-rw-r--r--  1 ahmedzouari  staff  10273 Feb 16 09:29 avgFile.jar
+-rw-r--r--  1 ahmedzouari  staff    142 Feb 22 19:31 batch1.dos.xml
+-rw-r--r--  1 ahmedzouari  staff    151 Feb 16 09:29 batch1.gnu.xml
+-rw-r--r--  1 ahmedzouari  staff    303 Feb 24 09:19 batch2.dos.xml
+-rw-r--r--  1 ahmedzouari  staff    343 Feb 16 09:29 batch2.gnu.xml
+-rw-r--r--  1 ahmedzouari  staff    333 Feb 24 09:21 batch3.xml
+-rw-r--r--  1 ahmedzouari  staff    318 Feb 16 09:29 batch4.xml
+-rw-r--r--  1 ahmedzouari  staff    342 Feb 16 09:29 batch5.broken.xml
+-rw-r--r--  1 ahmedzouari  staff     88 Feb 16 09:29 cleanup.bat
+-rw-r--r--  1 ahmedzouari  staff    704 Feb 16 09:29 numberdata.txt
+-rw-r--r--  1 ahmedzouari  staff   1128 Feb 16 09:29 randomwords.txt
+-rw-r--r--  1 ahmedzouari  staff      0 Feb 24 10:29 sum.out

@@ -34,7 +34,7 @@ public class BatchProcessorMain {
 	}
 
 	public static void executeBatch(Batch batch) {
-		Iterator it = batch.getCommands().entrySet().iterator();
+		//Iterator it = batch.getCommands().entrySet().iterator();
 		
 		
 		while (!batch.getCommandsQueue().isEmpty()) {
