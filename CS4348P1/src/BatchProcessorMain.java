@@ -35,15 +35,27 @@ public class BatchProcessorMain {
 
 	public static void executeBatch(Batch batch) {
 		Iterator it = batch.getCommands().entrySet().iterator();
+		
+		while (!batch.getCommandsQueue().isEmpty()) {
+		Command cmd = batch.getCommandsQueue().poll();
+		System.out.println(cmd.describe());
+		cmd.execute(batch.getWorkingDirectory());
+		}
+		
+		/*
 		while (it.hasNext()) {
 			Map.Entry pair = (Map.Entry)it.next();
-	        System.out.println(pair.getKey() + " = " + pair.getValue());
+	        //System.out.println(pair.getKey() + " = " + pair.getValue());
 	        Command cmd = (Command) pair.getValue();
 	        //System.out.println(cmd.getWorkingDir());
-	        cmd.execute(batch.getWorkingDirectory());
+	        
+	       
+	        System.out.println(cmd.describe());
+	        //cmd.execute(batch.getWorkingDirectory());
 	        it.remove(); // avoids a ConcurrentModificationException
 		}
-		System.out.println(batch.getWorkingDirectory());
+		*/
+		
 		
 		
 

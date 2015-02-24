@@ -11,10 +11,13 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import java.util.Queue;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
 
 public class BatchParser {
 	String workingDirectory;
@@ -53,6 +56,7 @@ public class BatchParser {
 	}
 
 	public Batch buildBatch(File batchFile) {
+		Queue<Command> que = new java.util.LinkedList<Command>();
 		String id;
 		String workingDir = null;
 		Map<String, Command> commands = new HashMap<String, Command>();
@@ -76,6 +80,7 @@ public class BatchParser {
 					id = cmd.getCommandID();
 
 					try {
+						que.add(cmd);
 						commands.put(id, cmd);
 					} catch (Exception e) {
 					}
@@ -85,14 +90,14 @@ public class BatchParser {
 			}
 			
 			workingDir = workingDirectory;
-			System.out.println("The working directory will be set to " + workingDir);
+			
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 
 		}
-		Batch B = new Batch(workingDir, commands);
+		Batch B = new Batch(workingDir, commands,que);
 		
 
 		return B;

@@ -52,7 +52,7 @@ public class CmdCommand extends Command {
 		}
 		
 		System.out.println("Program terminated!");
-		System.out.println("Executed");
+		
 		
 		
 	}
