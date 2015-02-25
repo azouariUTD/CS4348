@@ -22,6 +22,10 @@ public class Ahmed {
 		File f = new File(args[0]);
 		
 		//Queue<TreeNode> que = new java.util.LinkedList<TreeNode>();
+		
+		String test = "java.exe";
+		
+		System.out.println(test.substring(0, 4));
 
 		try {
 			FileInputStream fis = new FileInputStream(f);

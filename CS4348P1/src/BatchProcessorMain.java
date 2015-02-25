@@ -1,6 +1,6 @@
 import java.io.File;
-
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +33,7 @@ public class BatchProcessorMain {
 
 	}
 
-	public static void executeBatch(Batch batch) {
+	public static void executeBatch(Batch batch) throws InterruptedException, IOException {
 		//Iterator it = batch.getCommands().entrySet().iterator();
 		
 		
@@ -42,6 +42,8 @@ public class BatchProcessorMain {
 		System.out.println(cmd.describe());
 		cmd.execute(batch.getWorkingDirectory() , batch.getCommands());
 		}
+		
+		System.out.println("Finished Batch");
 		
 		
 		/*

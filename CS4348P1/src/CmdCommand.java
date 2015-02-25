@@ -1,7 +1,11 @@
 import org.w3c.dom.Element;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,82 +28,96 @@ public class CmdCommand extends Command {
 	}
 
 	public String describe() {
-		return "Command " + path;
+		return "Command: " + path;
 	}
 
-	public void execute(String workingDir, Map<String, Command> map) {
+	public void execute(String workingDir, Map<String, Command> map)
+			throws InterruptedException, IOException {
 		List<String> command = new ArrayList<String>();
-		
-		/*
-		
-       
-		try {
-			Command cmd = map.get(out);
-		} catch (cmd 
-		*/
-		
+
 		Command cmd = map.get(out);
 		Command cmd2 = map.get(in);
-		
-		if (cmd == null ) { System.out.println("error"); }
+
+		boolean b = true;
+		if (cmd == null)
+			b = false;
 
 		try {
-			outFile = cmd.getPath();
-			
-		} catch (NullPointerException e4) {
-			System.err
-					.println("Error Processing Batch Unable to locate OUT FileCommand with id:"
-							+ out);
-			e4.printStackTrace();
+			if (!b)
+				throw new ProcessException(
+						"Error Processing Batch Unable to locate OUT FileCommand with id: "
+								+ out);
+		} catch (Exception a) {
+
+			a.printStackTrace();
 			System.exit(0);
 
 		}
+
+		outFile = cmd.getPath();
+
 		try {
 			inFile = cmd2.getPath();
-			
+
 		} catch (NullPointerException e3) {
 
 		}
 
 		command.add(path);
-		
+
 		if (!(args == null || args.isEmpty())) {
 			StringTokenizer st = new StringTokenizer(args);
 			while (st.hasMoreTokens()) {
 				String tok = st.nextToken();
-				
+
 				command.add(tok);
 			}
 		}
 
-		if (inFile != null) {
-			command.add(inFile);
+		if (!"java".equalsIgnoreCase(path.substring(0, 4))) {
 
-		}
-		ProcessBuilder builder = new ProcessBuilder();
-		builder.command(command);
-		builder.directory(new File(workingDir));
+			if (!(inFile == null || inFile.isEmpty())) {
 
-		builder.redirectError(new File("error.txt"));
-		builder.redirectOutput(new File(outFile));
+				command.add(inFile);
 
-		Process process = null;
+			}
+			ProcessBuilder builder = new ProcessBuilder();
+			builder.command(command);
+			builder.directory(new File(workingDir));
 
-		try {
+			builder.redirectError(new File(workingDir, "error.txt"));
+			builder.redirectOutput(new File(workingDir, outFile));
+
+			Process process = null;
+
 			process = builder.start();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 
-		try {
 			process.waitFor();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-		System.out.println("Program terminated!");
+		} else {
+			ProcessBuilder builder = new ProcessBuilder(command);
+			builder.directory(new File(workingDir));
+			File wd = builder.directory();
+			final Process process = builder.start();
+			OutputStream os = process.getOutputStream();
+			FileInputStream fis = new FileInputStream(new File(wd, inFile));
+
+			int achar;
+			while ((achar = fis.read()) != -1) {
+				os.write(achar);
+			}
+			os.close();
+
+			File outfile = new File(wd, outFile);
+			FileOutputStream fos = new FileOutputStream(outfile);
+			InputStream is = process.getInputStream();
+
+			while ((achar = is.read()) != -1) {
+				fos.write(achar);
+
+			}
+			fos.close();
+		}
 
 	}
 
