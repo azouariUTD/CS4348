@@ -74,7 +74,7 @@ public class CmdCommand extends Command {
 			}
 		}
 
-		if (!"java".equalsIgnoreCase(path.substring(0, 4))) {
+		if (!("java".equalsIgnoreCase(path) ||"java.exe".equalsIgnoreCase(path)) ) {
 
 			if (!(inFile == null || inFile.isEmpty())) {
 
